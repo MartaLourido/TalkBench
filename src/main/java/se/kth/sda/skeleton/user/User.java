@@ -1,5 +1,8 @@
 package se.kth.sda.skeleton.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.validator.constraints.Length;
 import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.posts.Post;
@@ -43,10 +46,14 @@ public class User {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "personalPosts")
+    @OneToMany(mappedBy = "userPosts")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
     private List<Post> posts;
 
-    @OneToMany(mappedBy = "personalComments")
+    @OneToMany(mappedBy = "userComments")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
     private List<Comment> comments;
 
 

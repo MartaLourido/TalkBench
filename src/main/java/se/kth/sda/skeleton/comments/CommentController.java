@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import se.kth.sda.skeleton.exception.ResourceNotFoundException;
+import se.kth.sda.skeleton.exceptions.ResourceNotFoundException;
 import se.kth.sda.skeleton.posts.PostRepository;
 
 import javax.validation.Valid;
