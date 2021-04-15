@@ -1,10 +1,12 @@
 package se.kth.sda.skeleton.posts;
 
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.sun.istack.NotNull;
+
 import se.kth.sda.skeleton.comments.Comment;
+import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -25,15 +27,12 @@ public class Post {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private List<Comment> commentList;
     @ManyToOne
-    private List<User> posts;
-
-
-
+    private User user;
 
     public Post() {
     }
 
-    public Post(String body) {
+    public Post(@NotEmpty String body) {
         this.body = body;
     }
 
@@ -52,5 +51,8 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
-
 }
+
+
+
+

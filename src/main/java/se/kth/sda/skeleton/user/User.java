@@ -1,10 +1,13 @@
 package se.kth.sda.skeleton.user;
 
 import org.hibernate.validator.constraints.Length;
+import se.kth.sda.skeleton.comments.Comment;
+import se.kth.sda.skeleton.posts.Post;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 @Table(name="account")
@@ -39,9 +42,12 @@ public class User {
         this.password = password;
         this.name = name;
     }
- @OneToMany(mappedBy = "posts")
- private Post post;
-        @OneToMany(mappedBy = "")
+
+    @OneToMany(mappedBy = "personalPosts")
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "personalComments")
+    private List<Comment> comments;
 
 
     public Long getId() {

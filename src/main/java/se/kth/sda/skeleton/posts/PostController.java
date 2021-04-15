@@ -42,11 +42,13 @@ public class PostController {
         postRepository.deleteById(id);
   }
 
-  @PutMapping("/{postId}")
-    public ResponseEntity<Post> updatePost(@PathVariable Long postId, @RequestBody Post postParam){
-         postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
-        postParam.setId(postId);
-      Post post = postRepository.save(postParam);
-        return ResponseEntity.ok(post);
+  @PutMapping("/{id}")
+    public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post postParam){
+         postRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+         postParam.setId(id);
+         Post post = postRepository.save(postParam);
+         return ResponseEntity.ok(post);
   }
+
+
 }

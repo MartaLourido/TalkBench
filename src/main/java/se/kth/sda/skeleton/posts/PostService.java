@@ -15,7 +15,4 @@ public class PostService {
 
     public Post savePost (Post post){ return postRepository.save(post); }
 
-    public Post findAll( List<Post> posts){
-       return
-    }
 }
