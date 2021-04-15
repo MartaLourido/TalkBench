@@ -1,9 +1,14 @@
 package se.kth.sda.skeleton.posts;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
+import se.kth.sda.skeleton.comments.Comment;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -14,6 +19,15 @@ public class Post {
     @Column(nullable = false)
     @NotEmpty
     private String body;
+
+    @OneToMany(mappedBy = "commentedPost")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    private List<Comment> commentList;
+    @ManyToOne
+    private List<User> posts;
+
+
 
 
     public Post() {

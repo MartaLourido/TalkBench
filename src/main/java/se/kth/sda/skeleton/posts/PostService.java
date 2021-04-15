@@ -13,7 +13,9 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public Post savePost (Post post){
-        return postRepository.save(post);
+    public Post savePost (Post post){ return postRepository.save(post); }
+
+    public Post findAll( List<Post> posts){
+       return
     }
 }

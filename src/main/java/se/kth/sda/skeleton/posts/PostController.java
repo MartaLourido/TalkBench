@@ -30,16 +30,16 @@ public class PostController {
         List<Post> posts = postRepository.findAll();
         return ResponseEntity.ok(posts);
   }
-  @GetMapping("/{postId}")
-    public ResponseEntity<Post> getPostById(@PathVariable Long postId){
-       Post post = postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
+  @GetMapping("/{id}")
+    public ResponseEntity<Post> getPostById(@PathVariable Long id){
+       Post post = postRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
        return ResponseEntity.ok(post);
   }
-  @DeleteMapping ("/{postId}")
+  @DeleteMapping ("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletePost (@PathVariable Long postId){
-        postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
-        postRepository.deleteById(postId);
+    public void deletePost (@PathVariable Long id){
+        postRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+        postRepository.deleteById(id);
   }
 
   @PutMapping("/{postId}")

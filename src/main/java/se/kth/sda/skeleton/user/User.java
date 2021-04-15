@@ -14,6 +14,8 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+
+
     @Email(message = "Invalid email address! Please provide a valid email address")
     @NotEmpty(message = "Please provide an email address")
     @Column(name = "email", unique = true)
@@ -28,6 +30,7 @@ public class User {
     @Column(name = "name")
     private String name;
 
+
     // Hibernate needs a default constructor to function
     public User() {}
 
@@ -36,6 +39,9 @@ public class User {
         this.password = password;
         this.name = name;
     }
+ @OneToMany(mappedBy = "posts")
+ private Post post;
+        @OneToMany(mappedBy = "")
 
 
     public Long getId() {
