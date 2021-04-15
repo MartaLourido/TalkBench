@@ -20,7 +20,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="/">
-        TrackPack
+        TalkBench
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -67,9 +67,9 @@ export default function SignUp(onSubmit) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+ 
+        <img width="70px" height="auto" className="img-responsive"  src="https://i.ibb.co/znyPmZf/ourpet.png"  alt="logo" />
+
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>

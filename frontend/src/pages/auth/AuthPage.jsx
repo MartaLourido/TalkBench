@@ -27,7 +27,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="/">
-        TrackPack
+        TalkBench
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -99,11 +99,7 @@ export default function SignInSide(onSubmit) {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <div className="AvatarWrap">
-          <img      className="AvatarWrap"
-        src="https://i.ibb.co/znyPmZf/ourpet.png" 
-                className="Avatar"
-                alt="outPet"
-              />
+          <img width="70px" height="auto" className="img-responsive"  src="https://i.ibb.co/znyPmZf/ourpet.png"  alt="logo" />
           </div>
           <Typography component="h1" variant="h5">
             Sign in
