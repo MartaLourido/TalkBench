@@ -1,10 +1,21 @@
 package se.kth.sda.skeleton.posts;
 
-// @TODO add Hibernate annotations
+import se.kth.sda.skeleton.comments.Comment;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class Post {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String body;
+
+    @OneToMany (mappedBy = "commentedPost", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     public Post() {
     }
@@ -27,6 +38,14 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
 }
