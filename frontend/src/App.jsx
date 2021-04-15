@@ -29,14 +29,11 @@ export default function App() {
           <Route path="/posts">
             <PostsPage />
           </Route>
-
           <Route path="/chat">
             <ChatPage />
           </Route>
 
-          <Route path="/">
-            <HomePage />
-          </Route>
+         
         </Switch>
       </div>
     </BrowserRouter>
@@ -53,6 +50,9 @@ export default function App() {
           </Route>
           <Route path="/">
             <AuthPage />
+          </Route>
+          <Route path="/home">
+            <HomePage />
           </Route>
         </Switch>
       </div>

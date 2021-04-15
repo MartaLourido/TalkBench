@@ -106,6 +106,11 @@ export default function SignInSide(onSubmit) {
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
+             variant="outlined"
+             margin="normal"
+             required
+             fullWidth
+             autoFocus
                 type="email"
                 className="form-control"
                 placeholder="Email"
@@ -113,6 +118,10 @@ export default function SignInSide(onSubmit) {
                 onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
                   type="password"
                   placeholder="Password"
                   className="form-control"
@@ -121,12 +130,19 @@ export default function SignInSide(onSubmit) {
             />
   
             <Button
+            style={{
+              borderRadius: 30,
+              backgroundColor: "#15A2B8",
+              padding: "10px 16px",
+              fontSize: "15px"
+          }}
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
               onClick={() => onSubmit({ email, password, login})}
+              
      
             >
               Sign In

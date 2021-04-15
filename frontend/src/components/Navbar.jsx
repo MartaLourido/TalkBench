@@ -8,9 +8,10 @@ export default function Navbar({ onLogout }) {
       <img      className="AvatarWrap"
      src="https://i.ibb.co/znyPmZf/ourpet.png" alt="logo" border="0"></img>
       </Link> */}
-
+ <Link className="navbar-brand" to="/">
 <img width="70px" height="auto" className="img-responsive"  src="https://i.ibb.co/znyPmZf/ourpet.png"  alt="logo" />
-      TalkBench
+      
+</Link> 
       <button
         className="navbar-toggler"
         type="button"

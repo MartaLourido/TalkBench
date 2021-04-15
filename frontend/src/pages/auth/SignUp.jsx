@@ -77,6 +77,10 @@ export default function SignUp(onSubmit) {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
+               variant="outlined"
+               margin="normal"
+               required
+               fullWidth
                   type="text"
                   className="form-control"
                   value={name}
@@ -86,6 +90,11 @@ export default function SignUp(onSubmit) {
             </Grid>
             <Grid item xs={12}>
               <TextField
+               variant="outlined"
+               margin="normal"
+               required
+               fullWidth
+               autoFocus
                type="email"
                value={email}
                onChange={(e) => setEmail(e.target.value)}
@@ -95,6 +104,10 @@ export default function SignUp(onSubmit) {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
                type="password"
                placeholder="Password"
                className="form-control"
@@ -103,13 +116,15 @@ export default function SignUp(onSubmit) {
               />
             </Grid>
             <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
             </Grid>
           </Grid>
           <Button
+          style={{
+            borderRadius: 30,
+            backgroundColor: "#15A2B8",
+            padding: "10px 16px",
+            fontSize: "15px"
+        }}
             type="submit"
             fullWidth
             variant="contained"
