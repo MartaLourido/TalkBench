@@ -1,8 +1,52 @@
 package se.kth.sda.skeleton.posts;
 
-/*
-    @TODO create the methods needed to implement the API.
-    Don't forget to add necessary annotations.
- */
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import se.kth.sda.skeleton.exceptions.ResourceNotFoundException;
+
+import java.util.List;
+
+@RequestMapping("/posts")
+@RestController
 public class PostController {
+    PostRepository postRepository;
+    PostService postService;
+
+
+    @Autowired
+    public PostController(PostRepository postRepository, PostService postService) {
+        this.postRepository = postRepository;
+        this.postService = postService;
+    }
+  @PostMapping
+    public ResponseEntity<Post> createPost(@RequestBody Post postParam){
+        Post post = postService.savePost(postParam);
+        return ResponseEntity.status(HttpStatus.CREATED).body(post);
+  }
+  @GetMapping
+    public ResponseEntity<List<Post>> viewAllPosts(){
+        List<Post> posts = postRepository.findAll();
+        return ResponseEntity.ok(posts);
+  }
+  @GetMapping("/{postId}")
+    public ResponseEntity<Post> getPostById(@PathVariable Long postId){
+       Post post = postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
+       return ResponseEntity.ok(post);
+  }
+  @DeleteMapping ("/{postId}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePost (@PathVariable Long postId){
+        postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
+        postRepository.deleteById(postId);
+  }
+
+  @PutMapping("/{postId}")
+    public ResponseEntity<Post> updatePost(@PathVariable Long postId, @RequestBody Post postParam){
+         postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
+        postParam.setId(postId);
+      Post post = postRepository.save(postParam);
+        return ResponseEntity.ok(post);
+  }
 }

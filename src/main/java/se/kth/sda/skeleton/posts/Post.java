@@ -1,10 +1,20 @@
 package se.kth.sda.skeleton.posts;
 
-// @TODO add Hibernate annotations
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
+@Entity
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    @NotEmpty
     private String body;
+
 
     public Post() {
     }
