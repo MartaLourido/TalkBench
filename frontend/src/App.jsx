@@ -9,6 +9,7 @@ import AuthPage from "./pages/auth/AuthPage";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
 import ChatPage from "./pages/chat/ChatPage";
+import SignUp from "../src/pages/auth/SignUp";
 import "./App.css";
 
 export default function App() {
@@ -41,5 +42,22 @@ export default function App() {
     </BrowserRouter>
   );
 
-  return loggedIn ? loggedInRouter : <AuthPage />;
+  const notLoggedInRouter = (
+    <BrowserRouter>
+      <Navbar onLogout={() => Auth.logout()} />
+
+      <div className="container mt-5">
+        <Switch>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/">
+            <AuthPage />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
+
+  return loggedIn ? loggedInRouter : notLoggedInRouter; 
 }
