@@ -34,8 +34,8 @@ export default function LoginForm({ onSubmit }) {
           <div className="form-group">
             <button
               className="btn btn-info"
-              onClick={() => onSubmit({ email, password })}
-            >
+              onClick={() => onSubmit({email, password})}>
+            
               Login
             </button>
           </div>

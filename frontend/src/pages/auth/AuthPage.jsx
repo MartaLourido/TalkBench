@@ -26,8 +26,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        TrackPack
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -79,12 +79,12 @@ export default function SignInSide(onSubmit) {
     }
   }
 
-  async function register(registrationData) {
-    const registerSuccess = await Auth.register(registrationData);
-    if (!registerSuccess) {
-      alert("Couldn't register check credentials and try again");
-    }
-  }
+  // async function register(registrationData) {
+  //   const registerSuccess = await Auth.register(registrationData);
+  //   if (!registerSuccess) {
+  //     alert("Couldn't register check credentials and try again");
+  //   }
+  // }
 
   const classes = useStyles();
 
@@ -98,50 +98,40 @@ export default function SignInSide(onSubmit) {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <div className="AvatarWrap">
+          <img      className="AvatarWrap"
+        src="https://i.ibb.co/znyPmZf/ourpet.png" 
+                className="Avatar"
+                alt="outPet"
+              />
+          </div>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  placeholder="Password"
+                  className="form-control"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+  
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={() => onSubmit({ email, password })}
+              onClick={() => onSubmit({ email, password, login})}
+     
             >
               Sign In
             </Button>

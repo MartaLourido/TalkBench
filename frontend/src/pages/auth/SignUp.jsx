@@ -12,14 +12,15 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Auth from "../../services/Auth";
 
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        TrackPack
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -54,6 +55,14 @@ export default function SignUp(onSubmit) {
   const [password, setPassword] = useState("");
 
 
+  async function register(registrationData) {
+    const registerSuccess = await Auth.register(registrationData);
+    if (!registerSuccess) {
+      alert("Couldn't register check credentials and try again");
+    }
+  }
+
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -66,56 +75,31 @@ export default function SignUp(onSubmit) {
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                  type="text"
+                  className="form-control"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Name"
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+               type="email"
+               value={email}
+               onChange={(e) => setEmail(e.target.value)}
+               className="form-control"
+               placeholder="Email"
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+               type="password"
+               placeholder="Password"
+               className="form-control"
+               value={password}
+               onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -131,10 +115,11 @@ export default function SignUp(onSubmit) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={(e) => onSubmit({ name, email, password })}
+            onClick={(e) => onSubmit({register})}
           >
             Sign Up
           </Button>
+          
           <Grid container justify="flex-end">
             <Grid item>
                 
