@@ -23,11 +23,13 @@ public class Post {
     private String body;
 
     @OneToMany(mappedBy = "commentedPost")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private List<Comment> commentList;
     @ManyToOne
-    private User userPosts;
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
+    private User user;
+
+
 
     public Post() {
     }
@@ -50,6 +52,21 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User userPosts) {
+        this.user = userPosts;
+    }
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
     }
 }
 

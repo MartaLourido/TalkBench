@@ -30,12 +30,18 @@ public class User {
 
     @Length(min = 5, max=100, message = "Password length most be between 5-100 characters")
     @Column(name = "password")
+    @NotEmpty
     private String password;
 
     @Length(min = 3, max=100, message = "Name must be between 3-100 characters")
     @Column(name = "name")
     private String name;
 
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
 
     // Hibernate needs a default constructor to function
     public User() {}
@@ -46,15 +52,7 @@ public class User {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "userPosts")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
-    private List<Post> posts;
 
-    @OneToMany(mappedBy = "userComments")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
-    private List<Comment> comments;
 
 
     public Long getId() {
@@ -87,5 +85,21 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
