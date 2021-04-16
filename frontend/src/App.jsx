@@ -12,7 +12,22 @@ import ChatPage from "./pages/chat/ChatPage";
 import SignUp from "../src/pages/auth/SignUp";
 import "./App.css";
 
+async function register(registrationData) {
+  const registerSuccess = await Auth.register(registrationData);
+  if (!registerSuccess) {
+    alert("Couldn't register check credentials and try again");
+  }
+}
+
+async function login(loginData) {
+  const loginSuccess = await Auth.login(loginData);
+  if (!loginSuccess) {
+    alert("Invalid credentials");
+  }
+}
+
 export default function App() {
+
   // State
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
 
@@ -43,15 +58,14 @@ export default function App() {
 
   const notLoggedInRouter = (
     <BrowserRouter>
-      <Navbar onLogout={() => Auth.logout()} />
 
       <div className="container mt-5">
         <Switch>
           <Route path="/signup">
-            <SignUp />
+            <SignUp onSubmite={register} />
           </Route>
           <Route path="/">
-            <AuthPage />
+            <AuthPage onSubmit={login} />
           </Route>
         </Switch>
       </div>
