@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // Project files
-import RegisterForm from "./RegisterForm";
+
 import SignUp from "./SignUp";
 import Auth from "../../services/Auth";
 // import Carousel from "./Carousel";
