@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 export default function PostCard({ post, onDeleteClick }) {
   return (
@@ -6,9 +7,11 @@ export default function PostCard({ post, onDeleteClick }) {
       <div className="card-body">
         <p>{post.body}</p>
 
+
         <button className="btn btn-danger" onClick={onDeleteClick}>
           Delete
         </button>
+
       </div>
     </div>
   );
