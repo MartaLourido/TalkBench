@@ -45,11 +45,11 @@ public class PostController {
        Post post = postRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
        return ResponseEntity.ok(post);
   }
-  @DeleteMapping ("/post/{id}")
+  @DeleteMapping ("/posts/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePost (@PathVariable Long id){
-        postRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
-        postRepository.deleteById(id);
+        Post post = postRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+        postRepository.delete(post);
   }
 
   @PutMapping("/posts/{id}")

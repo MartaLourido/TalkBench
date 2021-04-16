@@ -35,11 +35,11 @@ public class CommentController {
     //Creates a new comment
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<Comment> createComment(@PathVariable Long postId, @RequestBody Comment commentParam) {
-        Post post = postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
+       Post post = postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
         commentParam.setCommentedPost(post);
         commentParam.setUser(userRepository.findByEmail(authService.getLoggedInUserEmail()));
-        commentService.saveComment(commentParam);
-        return ResponseEntity.status(HttpStatus.CREATED).body(commentParam);
+       Comment comment = commentService.saveComment(commentParam);
+        return ResponseEntity.status(HttpStatus.CREATED).body(comment);
     }
 
     //Returns all comments
@@ -60,9 +60,8 @@ public class CommentController {
 
     //Updates a comment
     @PutMapping("/comments/{id}")
-    public ResponseEntity<Comment> updateComment(@PathVariable Long id, @Valid @RequestBody Comment commentParam) {
+    public ResponseEntity<Comment> updateComment(@PathVariable Long id, @RequestBody Comment commentParam) {
        commentRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
-        commentParam.setId(id);
         Comment comment = commentService.updateComment(id, commentParam);
         return ResponseEntity.ok(comment);
     }
