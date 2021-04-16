@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 export default function Navbar({ onLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-info">
-      {/* <Link className="navbar-brand" to="/">
-      <img      className="AvatarWrap"
-     src="https://i.ibb.co/znyPmZf/ourpet.png" alt="logo" border="0"></img>
-      </Link> */}
+  
  <Link className="navbar-brand" to="/">
 <img width="70px" height="auto" className="img-responsive"  src="https://i.ibb.co/znyPmZf/ourpet.png"  alt="logo" />
       

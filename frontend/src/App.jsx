@@ -33,7 +33,9 @@ export default function App() {
             <ChatPage />
           </Route>
 
-         
+          <Route path="/home">
+            <HomePage />
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>
@@ -50,9 +52,6 @@ export default function App() {
           </Route>
           <Route path="/">
             <AuthPage />
-          </Route>
-          <Route path="/home">
-            <HomePage />
           </Route>
         </Switch>
       </div>

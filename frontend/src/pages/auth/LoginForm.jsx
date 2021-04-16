@@ -23,6 +23,7 @@ export default function LoginForm({ onSubmit }) {
           <div className="form-group">
             <label>Password:</label>
             <input
+            
               type="password"
               placeholder="Password"
               className="form-control"
@@ -34,8 +35,8 @@ export default function LoginForm({ onSubmit }) {
           <div className="form-group">
             <button
               className="btn btn-info"
-              onClick={() => onSubmit({email, password})}>
-            
+              onClick={() => onSubmit({ email, password })}
+            >
               Login
             </button>
           </div>
