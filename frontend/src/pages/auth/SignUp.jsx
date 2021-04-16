@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp(onSubmit) {
+export default function SignUp() {
 //Styles from material-ui
   const classes = useStyles();
 //const
@@ -69,6 +69,7 @@ export default function SignUp(onSubmit) {
 
   return (
     <Container component="main" maxWidth="xs">
+    <div onSubmit={register} />
       <CssBaseline />
       <div className={classes.paper}>
         <img
@@ -138,7 +139,7 @@ export default function SignUp(onSubmit) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={(e) => onSubmit({email, password}, {register})}
+            onClick={(e) => register({email, password})}
           >
             Sign Up
           </Button>

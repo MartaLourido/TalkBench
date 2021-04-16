@@ -92,6 +92,7 @@ export default function AuthPage(onSubmit) {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
+      <div onSubmit={login} />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
@@ -146,7 +147,7 @@ export default function AuthPage(onSubmit) {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={() => onSubmit({login})}
+              onClick={() => login({ email, password })}
             >
               Sign In
             </Button>

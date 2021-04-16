@@ -7,6 +7,7 @@ export default function RegisterForm({ onSubmit }) {
 
   return (
     <div className="card">
+   
       <div className="card-body">
         <h4 className="card-title">Sign up</h4>
         <div>

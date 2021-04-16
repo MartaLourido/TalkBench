@@ -33,7 +33,7 @@ export default function App() {
             <ChatPage />
           </Route>
 
-          <Route path="/home">
+          <Route path="/">
             <HomePage />
           </Route>
         </Switch>
