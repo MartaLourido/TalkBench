@@ -1,10 +1,16 @@
 package se.kth.sda.skeleton.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.validator.constraints.Length;
+import se.kth.sda.skeleton.comments.Comment;
+import se.kth.sda.skeleton.posts.Post;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 @Table(name="account")
@@ -14,6 +20,8 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+
+
     @Email(message = "Invalid email address! Please provide a valid email address")
     @NotEmpty(message = "Please provide an email address")
     @Column(name = "email", unique = true)
@@ -22,11 +30,18 @@ public class User {
 
     @Length(min = 5, max=100, message = "Password length most be between 5-100 characters")
     @Column(name = "password")
+    @NotEmpty
     private String password;
 
     @Length(min = 3, max=100, message = "Name must be between 3-100 characters")
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> comments;
 
     // Hibernate needs a default constructor to function
     public User() {}
@@ -36,6 +51,8 @@ public class User {
         this.password = password;
         this.name = name;
     }
+
+
 
 
     public Long getId() {
@@ -68,5 +85,21 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
