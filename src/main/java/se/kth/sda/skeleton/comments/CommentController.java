@@ -11,7 +11,6 @@ import se.kth.sda.skeleton.posts.Post;
 import se.kth.sda.skeleton.posts.PostRepository;
 import se.kth.sda.skeleton.user.UserRepository;
 
-import javax.validation.Valid;
 import java.util.List;
 
 
@@ -65,14 +64,6 @@ public class CommentController {
         Comment comment = commentService.updateComment(id, commentParam);
         return ResponseEntity.ok(comment);
     }
-
-
-
-    // @PostMapping("/users/{id}/comments")
-   // public ResponseEntity<List<Comment>> viewUserComments(@PathVariable Long id, @RequestBody Comment commentParam){
-
-   // }
-
 
 }
 

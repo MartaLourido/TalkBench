@@ -7,11 +7,11 @@ export default function PostCard({ post, onDeleteClick }) {
       <div className="card-body">
         <p>{post.body}</p>
 
-          <Link to={"/posts/{id}"}>
+
         <button className="btn btn-danger" onClick={onDeleteClick}>
           Delete
         </button>
-          </Link>
+
       </div>
     </div>
   );

@@ -58,11 +58,4 @@ public class PostController {
          Post post = postService.updatePost(id, postParam);
          return ResponseEntity.ok(post);
   }
-
-  //@PostMapping("/users/{id}/posts")
-   // public ResponseEntity<Post> viewUserPosts(@PathVariable Long id , @RequestBody Post postParam){
-       // User user = userRepository.findById().orElseThrow(ResourceNotFoundException::new);
-//  }
-
-
 }
