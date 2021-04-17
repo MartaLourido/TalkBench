@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 // Project files
 import SignUp from "./SignUp";
 import Auth from "../../services/Auth";
-import Login from "./Login";
 // Project styiling from material ui
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
@@ -31,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
   },
   image: {
-    backgroundImage: "url(https://www.linkpicture.com/q/firstpage.png)",
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1564865878688-9a244444042a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -59,12 +59,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AuthPage(onSubmit) {
+export default function SignUpPage(onSubmite) {
   // Methods
-  async function login(loginData) {
-    const loginSuccess = await Auth.login(loginData);
-    if (!loginSuccess) {
-      alert("Invalid credentials");
+  async function register(registrationData) {
+    const registerSuccess = await Auth.register(registrationData);
+    if (!registerSuccess) {
+      alert("Couldn't register check credentials and try again");
     }
   }
 
@@ -84,24 +84,17 @@ export default function AuthPage(onSubmit) {
               width="200px"
               height="auto"
               className="img-responsive"
-              src="https://www.linkpicture.com/q/logo_81.png" 
+              src="https://www.linkpicture.com/q/logo_81.png"
               alt="logo"
             />
           </div>
-          {/* <Carousel/> */}
 
-          <Typography component="h1" variant="h5">
-            {/* Sign in */}
-          </Typography>
+          <Typography component="h1" variant="h5"></Typography>
           <div className="col-12  strong-shadow">
-            <Login onSubmit={login} />
+            <SignUp onSubmite={register} />
           </div>
 
-          <Grid container>
-            <Grid item xs>
-              
-            </Grid>
-          </Grid>
+          <Grid container></Grid>
           <Box mt={5}>
             <Copyright />
           </Box>

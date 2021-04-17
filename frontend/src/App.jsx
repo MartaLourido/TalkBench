@@ -9,7 +9,7 @@ import AuthPage from "./pages/auth/AuthPage";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
 import ChatPage from "./pages/chat/ChatPage";
-import SignUp from "../src/pages/auth/SignUp";
+import SignUpPage from "../src/pages/auth/SignUpPage";
 import "./App.css";
 
 async function register(registrationData) {
@@ -62,7 +62,7 @@ export default function App() {
       <div className="container mt-5">
         <Switch>
           <Route path="/signup">
-            <SignUp onSubmite={register} />
+            <SignUpPage onSubmite={register} />
           </Route>
           <Route path="/">
             <AuthPage onSubmit={login} />
