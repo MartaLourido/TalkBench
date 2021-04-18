@@ -31,7 +31,7 @@ public class CommentController {
         this.commentService=commentService;
     }
 
-    //Creates a new comment
+    //Creates a new comment + Works in Postman
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<Comment> createComment(@PathVariable Long postId, @RequestBody Comment commentParam) {
        Post post = postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
@@ -41,14 +41,17 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(comment);
     }
 
-    //Returns all comments
-    @GetMapping("/comments")
-    public ResponseEntity <List<Comment>> listAllComments(){
-        List<Comment> comments = commentRepository.findAll();
-        return ResponseEntity.ok(comments);
+    // !!! New method !!! Works in Postman
+    //Returns all comments on post given by postId
+    @GetMapping("/posts/{postId}/comments")
+    public ResponseEntity<List<Comment>> getComments(@PathVariable Long postId) {
+        Post post = postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
+        List<Comment> comment = commentRepository.findAll();
+        return ResponseEntity.ok(comment);
     }
 
-    //Deletes a comment
+    //Not a commentId?
+    //Deletes a comment +
     @DeleteMapping("/comments/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable Long id) {
@@ -57,7 +60,20 @@ public class CommentController {
         commentRepository.delete(comment);
     }
 
-    //Updates a comment
+
+    //Returns all comments +
+    @GetMapping("/comments")
+    public ResponseEntity <List<Comment>> listAllComments(){
+        List<Comment> comments = commentRepository.findAll();
+        return ResponseEntity.ok(comments);
+    }
+
+
+
+
+
+    //Should not it be commentId?
+    //Updates a comment +
     @PutMapping("/comments/{id}")
     public ResponseEntity<Comment> updateComment(@PathVariable Long id, @RequestBody Comment commentParam) {
        commentRepository.findById(id).orElseThrow(ResourceNotFoundException::new);

@@ -29,8 +29,8 @@ public class User {
 
 
     @Length(min = 5, max=100, message = "Password length most be between 5-100 characters")
+    @NotEmpty(message = "Please provide a password")
     @Column(name = "password")
-    @NotEmpty
     private String password;
 
     @Length(min = 3, max=100, message = "Name must be between 3-100 characters")

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
 
-
 import javax.validation.Valid;
 
 @RestController
@@ -20,7 +19,6 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping("/register")
-
     public ResponseEntity<?> register(@Valid @RequestBody User user) {
 
         userService.register(user);
