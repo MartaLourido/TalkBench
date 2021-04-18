@@ -50,16 +50,15 @@ export default function PostCard({ post, onDeleteClick}) {
 
           <p>{post.body}</p>
 
+          <button className="btn btn-warning" onClick={onDeleteClick}>
+              Delete post
+          </button>
+
           <div className="comments-form">
               <CommentForm
                   onSubmit={(commentData) => createComment(commentData, post.id)}
               />
           </div>
-
-
-          <button className="btn btn-warning" onClick={onDeleteClick}>
-              Delete
-          </button>
 
           <div className="comments-container">{CommentsArray}</div>
 
