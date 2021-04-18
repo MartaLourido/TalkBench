@@ -1,16 +1,31 @@
 import React from "react";
 
-export default function UpdateCard({ post, onUpdateClick }) {
-    return (
-        <div className="card mt-3">
-            <div className="card-body">
-                <p>{post.body}</p>
+export default function UpdateCard({ Post, onUpdateClick }) {
+    const [body, setBody] = React.useState("");
 
-                <button className="btn btn-danger" onClick={onUpdateClick}>
-                    Edit
-                </button>
+    const handleUpdate = () => {
+      // Invoke the passed in event callback
+      onUpdateClick({ body: body });
+  
+      // Clear the input field
+      setBody("");
+    };
+  return (
+    <div className="card mt-3">
+      <div className="card-body">
+        <textarea
+          className="form-control"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
 
-            </div>
-        </div>
-    );
+        <button
+          className="btn btn-info"
+          onClick={() => onUpdateClick({ ...Post, body })}
+        >
+          Edit
+        </button>
+      </div>
+    </div>
+  );
 }

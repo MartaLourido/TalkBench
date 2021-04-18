@@ -19,6 +19,7 @@ export default function PostForm({ onSubmit }) {
           <div className="form-group">
             <textarea
               className="form-control"
+              placeholder= "What's on your mind?"
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
