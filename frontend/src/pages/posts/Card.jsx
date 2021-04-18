@@ -45,7 +45,7 @@ export default function PostCard({ post, onDeleteClick, postId }) {
           </div>
 
 
-          <button className="btn btn-danger" onClick={onDeleteClick}>
+          <button className="btn btn-warning" onClick={onDeleteClick}>
               Delete
           </button>
 
