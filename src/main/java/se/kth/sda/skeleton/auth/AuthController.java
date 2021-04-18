@@ -20,6 +20,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody User user) {
+
         userService.register(user);
 
         String token = authService.createAuthToken(user.getEmail());
