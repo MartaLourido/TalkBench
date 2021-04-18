@@ -40,6 +40,10 @@ export default function RegisterForm({ onSubmit }) {
               className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+<<<<<<< HEAD
+=======
+              required
+>>>>>>> c8f5dd1e17b250dd556b23f685a84da4213f0c63
             />
           </div>
 

@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
 
+
+import javax.validation.Valid;
+
 @RestController
 public class AuthController {
     @Autowired
@@ -17,7 +20,9 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
+
+    public ResponseEntity<?> register(@Valid @RequestBody User user) {
+
         userService.register(user);
 
         String token = authService.createAuthToken(user.getEmail());

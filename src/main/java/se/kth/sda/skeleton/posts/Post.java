@@ -22,7 +22,9 @@ public class Post {
     @NotEmpty
     private String body;
 
+
     @OneToMany(mappedBy = "commentedPost", cascade = CascadeType.ALL)
+
     private List<Comment> commentList;
     @ManyToOne
     @JsonIdentityReference(alwaysAsId = true)
