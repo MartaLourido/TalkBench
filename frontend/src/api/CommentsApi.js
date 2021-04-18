@@ -3,7 +3,7 @@ import Api from "./Api";
 class CommentsApi {
 
     getComments(postId) {
-    return Api.get("/posts" + postId + "/comments");
+    return Api.get('/posts/' + postId + '/comments');
     }
 
     // listAllComments() {
@@ -12,7 +12,7 @@ class CommentsApi {
 
     // a comment created for a post by post id
     createComment(comment, postId) {
-        return Api.post('/posts' + postId + '/comments', comment);
+        return Api.post('/posts/' + postId + '/comments', comment);
     }
 
     updateComment(comment, id) {
