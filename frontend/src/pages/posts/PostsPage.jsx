@@ -50,6 +50,8 @@ export default function PostsPage() {
       <Form onSubmit={(postData) => createPost(postData)} />
 
       {CardsArray}
+
+      
     </div>
   );
 }

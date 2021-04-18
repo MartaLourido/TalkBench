@@ -1,7 +1,6 @@
 // NPM Packages
 import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
 // Project files
 import Auth from "./services/Auth";
 import Navbar from "./components/Navbar";
@@ -9,7 +8,22 @@ import AuthPage from "./pages/auth/AuthPage";
 import HomePage from "./pages/home/HomePage";
 import PostsPage from "./pages/posts/PostsPage";
 import ChatPage from "./pages/chat/ChatPage";
+import SignUpPage from "../src/pages/auth/SignUpPage";
 import "./App.css";
+
+async function register(registrationData) {
+  const registerSuccess = await Auth.register(registrationData);
+  if (!registerSuccess) {
+    alert("Couldn't register check credentials and try again");
+  }
+}
+
+async function login(loginData) {
+  const loginSuccess = await Auth.login(loginData);
+  if (!loginSuccess) {
+    alert("Invalid credentials");
+  }
+}
 
 export default function App() {
   // State
@@ -28,7 +42,6 @@ export default function App() {
           <Route path="/posts">
             <PostsPage />
           </Route>
-
           <Route path="/chat">
             <ChatPage />
           </Route>
@@ -41,5 +54,20 @@ export default function App() {
     </BrowserRouter>
   );
 
-  return loggedIn ? loggedInRouter : <AuthPage />;
+  const notLoggedInRouter = (
+    <BrowserRouter>
+      <div className="container mt-5">
+        <Switch>
+          <Route path="/signup">
+            <SignUpPage onSubmite={register} />
+          </Route>
+          <Route path="/">
+            <AuthPage onSubmit={login} />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
+
+  return loggedIn ? loggedInRouter : notLoggedInRouter;
 }

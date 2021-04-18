@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 export default function Navbar({ onLogout }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link className="navbar-brand" to="/">
-        SDA starter
-      </Link>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-info">
+  
+ <Link className="navbar-brand" to="/">
+<img width="70px" height="auto" className="img-responsive"  src="https://i.ibb.co/znyPmZf/ourpet.png"  alt="logo" />
+      
+</Link> 
       <button
         className="navbar-toggler"
         type="button"
@@ -41,7 +43,7 @@ export default function Navbar({ onLogout }) {
         </ul>
 
         <button
-          className="btn btn-outline-info my-2 my-sm-0"
+          className="btn btn-outline-light " id="navbarColor01"
           onClick={onLogout}
         >
           Logout
