@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import CommentCard from "../comments/CommentCard";
 import CommentForm from "../comments/CommentForm";
 import CommentsApi from "../../api/CommentsApi";
+import PostsApi from "../../api/PostsApi";
 
 export default function PostCard({ post, onDeleteClick}) {
     const [comments, setComments] = useState([]);
@@ -21,6 +22,17 @@ export default function PostCard({ post, onDeleteClick}) {
         }
     }
 
+    async function deleteComment(post) {
+        try {
+            await CommentsApi.deleteComment(post.id);
+            const newComments = comments.filter((p) => p.id !== post.id);
+
+            setComments(newComments);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     useEffect(() => {
         CommentsApi.getComments(post.id)
             .then(({ data }) => setComments(data))
@@ -29,7 +41,7 @@ export default function PostCard({ post, onDeleteClick}) {
 
     // Components
     const CommentsArray = comments.map((comment) => (
-        <CommentCard key={post.id} comment={comment} />
+        <CommentCard key={post.id} comment={comment} onDeleteClick={() => deleteComment(comment)} />
     ));
 
   return (
