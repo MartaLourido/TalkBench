@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import PostsApi from "../../api/PostsApi";
 import Form from "./Form";
 import Card from "./Card";
+import UpdateCard from "./UpdateCard";
 
 export default function PostsPage() {
   // Local state
@@ -34,6 +35,18 @@ export default function PostsPage() {
     }
   }
 
+  //!!! Not finished
+  async function updatePost(post) {
+    try {
+      await PostsApi.updatePost(post.id);
+      const newPosts = post;
+
+      setPosts(newPosts);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   useEffect(() => {
     PostsApi.getAllPosts()
       .then(({ data }) => setPosts(data))
@@ -45,13 +58,17 @@ export default function PostsPage() {
     <Card key={post.id} post={post} onDeleteClick={() => deletePost(post)} />
   ));
 
+  //For updatePost
+  const CardsArray1 = posts.map((post) => (
+      <UpdateCard key={post.id} post={post} onUpdateClick={() => updatePost(post)} />
+  ));
+
   return (
     <div>
       <Form onSubmit={(postData) => createPost(postData)} />
 
       {CardsArray}
 
-      
     </div>
   );
 }

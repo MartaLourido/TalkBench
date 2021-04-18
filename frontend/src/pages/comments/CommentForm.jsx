@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PostForm({ onSubmit }) {
+export default function CommentForm({ onSubmit }) {
   const [body, setBody] = React.useState("");
 
   const handleSubmit = () => {
@@ -14,7 +14,6 @@ export default function PostForm({ onSubmit }) {
   return (
     <div className="card">
       <div className="card-body">
-        <h4 className="card-title">Make a new post</h4>
         <div>
           <div className="form-group">
             <textarea
@@ -26,7 +25,7 @@ export default function PostForm({ onSubmit }) {
 
           <div className="form-group">
             <button className="btn btn-info" onClick={handleSubmit}>
-              Post
+              Submit comment
             </button>
           </div>
         </div>
