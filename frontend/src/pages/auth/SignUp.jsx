@@ -8,9 +8,9 @@ export default function SignUp({ onSubmite }) {
 
   return (
     <div className="card">
-    <div className="card-body">
-      <h4 className="AvatarWrap">Sign up</h4>
-      <div>
+      <div className="card-body">
+        <h4 className="AvatarWrap">Join us!</h4>
+        <div>
           <div className="form-group">
             <label>Name:</label>
             <input
@@ -45,22 +45,21 @@ export default function SignUp({ onSubmite }) {
           </div>
 
           <div className="AvatarWrap">
-              <button
-                className="btn btn-info"
+            <button
+              className="btn btn-info"
               className="btn btn-info"
               onClick={(e) => onSubmite({ name, email, password })}
             >
               Create account
             </button>
-            </div>
-            <div className="AvatarWrap">
-              <Link to="/" variant="body2">
-                {"Don't have an account? Sign In"}
-              </Link>
-            </div>
+          </div>
+          <div className="AvatarWrap">
+            <Link to="/" variant="body2">
+              {"Don't have an account? Sign In"}
+            </Link>
           </div>
         </div>
       </div>
-
+    </div>
   );
 }

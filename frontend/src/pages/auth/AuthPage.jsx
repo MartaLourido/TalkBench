@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // Project files
-import SignUp from "./SignUp";
 import Auth from "../../services/Auth";
 import Login from "./Login";
 // Project styiling from material ui
@@ -84,7 +83,7 @@ export default function AuthPage(onSubmit) {
               width="200px"
               height="auto"
               className="img-responsive"
-              src="https://www.linkpicture.com/q/logo_81.png" 
+              src="https://www.linkpicture.com/q/logo_81.png"
               alt="logo"
             />
           </div>
@@ -98,9 +97,7 @@ export default function AuthPage(onSubmit) {
           </div>
 
           <Grid container>
-            <Grid item xs>
-              
-            </Grid>
+            <Grid item xs></Grid>
           </Grid>
           <Box mt={5}>
             <Copyright />

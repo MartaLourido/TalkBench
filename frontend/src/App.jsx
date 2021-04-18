@@ -1,7 +1,6 @@
 // NPM Packages
 import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
 // Project files
 import Auth from "./services/Auth";
 import Navbar from "./components/Navbar";
@@ -27,7 +26,6 @@ async function login(loginData) {
 }
 
 export default function App() {
-
   // State
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
 
@@ -58,7 +56,6 @@ export default function App() {
 
   const notLoggedInRouter = (
     <BrowserRouter>
-
       <div className="container mt-5">
         <Switch>
           <Route path="/signup">
@@ -72,5 +69,5 @@ export default function App() {
     </BrowserRouter>
   );
 
-  return loggedIn ? loggedInRouter : notLoggedInRouter; 
+  return loggedIn ? loggedInRouter : notLoggedInRouter;
 }
