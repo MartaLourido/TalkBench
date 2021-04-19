@@ -3,7 +3,6 @@ import React from "react";
 export default function UpdateCard({ onUpdateClick, post }) {
     const [body, setBody] = React.useState(post.body);
 
-
     const handleUpdate = (e) => {
         e.preventDefault()
       onUpdateClick({ body: body });
