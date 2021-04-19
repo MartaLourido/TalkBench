@@ -1,19 +1,13 @@
 import React, {useEffect} from "react";
 import PostsApi from "../../api/PostsApi";
 
-export default function UpdateCard({ onUpdateClick, post }) {
+export default function UpdateCard({ onUpdateClick, onSubmite, post }) {
     const [body, setBody] = React.useState(post.body);
 
     const handleUpdate = (e) => {
         e.preventDefault()
         onUpdateClick({ body: body });
-
-    // useEffect(() => {
-    //     PostsApi.getAllPosts()
-    //         .then(({ data }) => post(data))
-    //         .catch((err) => console.error(err));
-    // }, [post]);
-
+        onSubmite();
     };
     return (
         <div className="card mt-3">

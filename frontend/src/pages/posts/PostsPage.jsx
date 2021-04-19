@@ -36,7 +36,6 @@ export default function PostsPage({ post, onDeleteClick }) {
   }
 
 
-
   useEffect(() => {
     PostsApi.getAllPosts()
       .then(({ data }) => setPosts(data))
@@ -47,7 +46,6 @@ export default function PostsPage({ post, onDeleteClick }) {
   const CardsArray = posts.map((post) => (
     <Card key={post.id} post={post} onDeleteClick={() => deletePost(post)} />
   ));
-
 
   return (
     <div>

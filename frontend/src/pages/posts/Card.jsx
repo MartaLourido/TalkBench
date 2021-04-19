@@ -9,6 +9,7 @@ import UpdateCard from "./UpdateCard";
 export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
     const [isUpdating, setIsUpdating] = useState(false);
     const [comments, setComments] = useState([]);
+    const [postTitle, setPostTitle] = useState(post.body);
 
 
     async function createComment(commentData) {
@@ -37,6 +38,9 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
     async function updatePost(postToUpdate) {
         try {
             await PostsApi.updatePost(post.id, postToUpdate);
+            PostsApi.getPostById(post.id)
+                .then(({data}) => setPostTitle(data.body))
+                .catch((err) => console.error(err));
         } catch (e) {
             console.error(e);
         }
@@ -48,15 +52,17 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
             .catch((err) => console.error(err));
     }, [setComments]);
 
+
+
     // Components
     console.log(comments)
 
     return (
         <div className="card mt-3">
             <div className="card-body">
-                <p>{post.body}</p>
+                <p>{postTitle}</p>
              <small className="font-weight-light float-left">{post.user}</small>
-           <UpdateCard />
+           {/*<UpdateCard />*/}
 
                 <button className="btn btn-warning" size="lg" onClick={onDeleteClick}>
                     Delete post
@@ -73,11 +79,15 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
 
                 <button className="btn btn-info"
                         onClick={() =>
-                            isUpdating ? setIsUpdating(false) : setIsUpdating(true)}>
+                            setIsUpdating(true)}>
                     Edit post
                 </button>
-                {isUpdating && (<UpdateCard onUpdateClick={(postData) => updatePost(postData)}
+                {isUpdating && (<UpdateCard onUpdateClick={(postData) =>
+                        updatePost(postData)
+
+                    }
                                             post={post}
+                                            onSubmite={ ()=>setIsUpdating(false)}
                     />
                 )}
 
