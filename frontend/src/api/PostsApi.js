@@ -13,7 +13,7 @@ class PostsApi {
         return Api.post('/posts', post);
     }
 
-    updatePost(post, id) {
+    updatePost(id, post) {
         return Api.put('/posts' +id, post);
     }
 
