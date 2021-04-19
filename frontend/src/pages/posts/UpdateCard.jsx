@@ -5,25 +5,25 @@ export default function UpdateCard({ onUpdateClick, post }) {
 
     const handleUpdate = (e) => {
         e.preventDefault()
-      onUpdateClick({ body: body });
+        onUpdateClick({ body: body });
 
     };
-  return (
-    <div className="card mt-3">
-      <div className="card-body">
+    return (
+        <div className="card mt-3">
+            <div className="card-body">
         <textarea
-          className="form-control"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+            className="form-control"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
         />
 
-        <button
-          className="btn btn-info"
-          onClick={handleUpdate}
-        >
-          Submit change
-        </button>
-      </div>
-    </div>
-  );
+                <button
+                    className="btn btn-info"
+                    onClick={handleUpdate}
+                >
+                    Submit change
+                </button>
+            </div>
+        </div>
+    );
 }
