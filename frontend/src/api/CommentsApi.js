@@ -7,6 +7,7 @@ class CommentsApi {
     }
 
     createComment(postId, commentData) {
+        
         return Api.post(`/posts/${postId}/comments`, commentData);
     }
 
