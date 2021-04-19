@@ -87,16 +87,16 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
 
         
           <div className="comments-container">
-            {comments
-              ? comments.map((comment) => (
-                  <CommentCard
-                    key={post.id}
-                    comment={comment}
-                    onDeleteClick={() => deleteComment(comment)}
-                  />
-                ))
-              : null}
-          </div>
+          {comments
+            && filteredCommentList.map((comment) => (
+                <CommentCard
+                  key={post.id}
+                  comment={comment}
+                  onDeleteClick={() => deleteComment(comment)}
+                />
+              ))
+            }
+        </div>
         
           {isUpdating && (
             <UpdateCard
