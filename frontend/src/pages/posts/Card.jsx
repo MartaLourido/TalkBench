@@ -87,8 +87,8 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
 
         
           <div className="comments-container">
-            {comments
-              && filteredCommentList.map((comment) => (
+          {comments
+            && filteredCommentList.map((comment) => (
                 <CommentCard
                   key={post.id}
                   comment={comment}
@@ -96,7 +96,7 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
                 />
               ))
             }
-          </div>
+        </div>
         
           {isUpdating && (
             <UpdateCard
