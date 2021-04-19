@@ -21,7 +21,7 @@ export default function UpdateCard({ Post, onUpdateClick }) {
 
         <button
           className="btn btn-info"
-          onClick={() => onUpdateClick({ ...Post, body })}
+          onClick={() => onUpdateClick({...Post, body })}
         >
           Edit
         </button>
