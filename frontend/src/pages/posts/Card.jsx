@@ -7,6 +7,7 @@ import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
 
 export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
+
     const [isUpdating, setIsUpdating] = useState(false);
     const [comments, setComments] = useState([]);
     const [postTitle, setPostTitle] = useState(post.body);
@@ -101,3 +102,4 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
         </div>
     );
 }
+

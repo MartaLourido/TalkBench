@@ -16,6 +16,7 @@ class PostsApi {
     updatePost(id, post) {
 
         return Api.put('/posts/' +id, post);
+
     }
 
     deletePost(id) {

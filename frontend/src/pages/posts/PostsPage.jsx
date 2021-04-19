@@ -35,7 +35,6 @@ export default function PostsPage({ post, onDeleteClick }) {
     }
   }
 
-
   useEffect(() => {
     PostsApi.getAllPosts()
       .then(({ data }) => setPosts(data))
@@ -52,7 +51,6 @@ export default function PostsPage({ post, onDeleteClick }) {
       <Form onSubmit={(postData) => createPost(postData)} />
 
       {CardsArray}
-
     </div>
   );
 }

@@ -13,12 +13,11 @@ public class PostService {
 
     public Post savePost (Post post){ return postRepository.save(post); }
 
-    public Post updatePost(Long id, Post postParam){
-        postParam.setId(id);
-        Post post = postRepository.save(postParam);
+    public Post updatePost(Long id, Post postParam, Post existingPost){
+        existingPost.setBody(postParam.getBody());
+        Post post = postRepository.save(existingPost);
         return post;
     }
 
-   // public boolean authorized()
 
 }
