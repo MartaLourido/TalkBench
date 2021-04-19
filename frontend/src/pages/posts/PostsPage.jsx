@@ -35,14 +35,7 @@ export default function PostsPage({ post, onDeleteClick }) {
     }
   }
 
-  //!!! Not finished
-  async function updatePost(postToUpdate) {
-    try {
-      await PostsApi.updatePost(post.id, postToUpdate);
-    } catch (e) {
-      console.error(e);
-    }
-  }
+
 
   useEffect(() => {
     PostsApi.getAllPosts()
@@ -55,10 +48,6 @@ export default function PostsPage({ post, onDeleteClick }) {
     <Card key={post.id} post={post} onDeleteClick={() => deletePost(post)} />
   ));
 
-  //For updatePost
-  const CardsArray1 = posts.map((post) => (
-      <UpdateCard key={post.id} post={post} onUpdateClick={() => updatePost(post)} />
-  ));
 
   return (
     <div>

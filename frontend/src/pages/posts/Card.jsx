@@ -55,8 +55,8 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
         <div className="card mt-3">
             <div className="card-body">
                 <p>{post.body}</p>
-                {/* <small className="font-weight-light float-left">{post.user}</small>
-        <UpdateCard /> */}
+             <small className="font-weight-light float-left">{post.user}</small>
+           <UpdateCard />
 
                 <button className="btn btn-warning" size="lg" onClick={onDeleteClick}>
                     Delete post
