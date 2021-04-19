@@ -10,9 +10,6 @@ export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
     const [isUpdating, setIsUpdating] = useState(false);
     const [comments, setComments] = useState([]);
 
-    const UpdateClick = () => {
-        setIsUpdating(true);
-    };
 
     async function createComment(commentData) {
         try {

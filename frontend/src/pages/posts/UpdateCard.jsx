@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
+import PostsApi from "../../api/PostsApi";
 
 export default function UpdateCard({ onUpdateClick, post }) {
     const [body, setBody] = React.useState(post.body);
@@ -6,6 +7,12 @@ export default function UpdateCard({ onUpdateClick, post }) {
     const handleUpdate = (e) => {
         e.preventDefault()
         onUpdateClick({ body: body });
+
+    // useEffect(() => {
+    //     PostsApi.getAllPosts()
+    //         .then(({ data }) => post(data))
+    //         .catch((err) => console.error(err));
+    // }, [post]);
 
     };
     return (
