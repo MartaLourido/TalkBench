@@ -73,6 +73,9 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
                   onDeleteClick={() => deleteComment(comment)}
                 />
               ))
+
+
+              
             }
         </div>
 
