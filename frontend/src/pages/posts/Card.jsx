@@ -7,74 +7,99 @@ import PostsApi from "../../api/PostsApi";
 import UpdateCard from "./UpdateCard";
 
 export default function PostCard({ post, onDeleteClick, onUpdateClick }) {
-  const [isUpdating, setIsUpdating] = useState(false);
-  const [comments, setComments] = useState([]);
 
-  const UpdateClick = () => {
-    setIsUpdating(true);
-  };
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [comments, setComments] = useState([]);
+    const [postTitle, setPostTitle] = useState(post.body);
 
-  async function createComment(commentData) {
-    try {
-      const response = await CommentsApi.createComment(post.id, commentData);
-      const comment = response.data;
-      const newComment = comments.concat(comment);
 
-      setComments(newComment);
-    } catch (e) {
-      console.error(e);
+    async function createComment(commentData) {
+        try {
+            const response = await CommentsApi.createComment(post.id, commentData);
+            const comment = response.data;
+            const newComment = comments.concat(comment);
+
+            setComments(newComment);
+        } catch (e) {
+            console.error(e);
+        }
     }
-  }
 
-  async function deleteComment(post) {
-    try {
-      await CommentsApi.deleteComment(post.id);
-      const newComments = comments.filter((p) => p.id !== post.id);
+    async function deleteComment(post) {
+        try {
+            await CommentsApi.deleteComment(post.id);
+            const newComments = comments.filter((p) => p.id !== post.id);
 
-      setComments(newComments);
-    } catch (e) {
-      console.error(e);
+            setComments(newComments);
+        } catch (e) {
+            console.error(e);
+        }
     }
-  }
 
-  useEffect(() => {
-    CommentsApi.getComments(post.id)
-      .then(({ data }) => setComments(data))
-      .catch((err) => console.error(err));
-  }, [setComments]);
+    async function updatePost(postToUpdate) {
+        try {
+            await PostsApi.updatePost(post.id, postToUpdate);
+            PostsApi.getPostById(post.id)
+                .then(({data}) => setPostTitle(data.body))
+                .catch((err) => console.error(err));
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
-  // Components
+    useEffect(() => {
+        CommentsApi.getComments(post.id)
+            .then(({ data }) => setComments(data))
+            .catch((err) => console.error(err));
+    }, [setComments]);
 
 
-  console.log(comments)
 
-  return (
-    <div className="card mt-3">
-      <div className="card-body">
-        <p>{post.body}</p>
-        <small className="font-weight-light float-left">{post.user}</small>
-        <UpdateCard />
+    // Components
+    console.log(comments)
 
-        <button className="btn btn-warning" size="lg" onClick={onDeleteClick}>
-          Delete post
-        </button>
-        <div className="comments-container">
-          {(comments) ? comments.map((comment) => (
-            <CommentCard
-              key={post.id}
-              comment={comment}
-              onDeleteClick={() => deleteComment(comment)}
-            />
-          )) : null}
+    return (
+        <div className="card mt-3">
+            <div className="card-body">
+                <p>{postTitle}</p>
+             <small className="font-weight-light float-left">{post.user}</small>
+           {/*<UpdateCard />*/}
+
+                <button className="btn btn-warning" size="lg" onClick={onDeleteClick}>
+                    Delete post
+                </button>
+                <div className="comments-container">
+                    {(comments) ? comments.map((comment) => (
+                        <CommentCard
+                            key={post.id}
+                            comment={comment}
+                            onDeleteClick={() => deleteComment(comment)}
+                        />
+                    )) : null}
+                </div>
+
+                <button className="btn btn-info"
+                        onClick={() =>
+                            setIsUpdating(true)}>
+                    Edit post
+                </button>
+                {isUpdating && (<UpdateCard onUpdateClick={(postData) =>
+                        updatePost(postData)
+
+                    }
+                                            post={post}
+                                            onSubmite={ ()=>setIsUpdating(false)}
+                    />
+                )}
+
+                <div className="comments-form">
+                    <CommentForm
+                        id={post.id}
+                        onSubmit={createComment}
+                    />
+                </div>
+            </div>
         </div>
-
-        <div className="comments-form">
-          <CommentForm
-            id={post.id}
-            onSubmit={createComment}
-          />
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
+

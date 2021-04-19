@@ -54,6 +54,7 @@ public class PostController {
 
   @PutMapping("/posts/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post postParam){
+
         Post existingPost = postRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
          Post post = postService.updatePost(id, postParam, existingPost);
          return ResponseEntity.ok(post);

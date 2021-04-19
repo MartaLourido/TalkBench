@@ -31,7 +31,9 @@ public class CommentController {
         this.commentService=commentService;
     }
 
+
     //Creates a new comment + Works in Postman
+
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<Comment> createComment(@PathVariable Long postId, @RequestBody Comment commentParam) {
        Post post = postRepository.findById(postId).orElseThrow(ResourceNotFoundException::new);
@@ -40,6 +42,7 @@ public class CommentController {
        Comment comment = commentService.saveComment(commentParam);
         return ResponseEntity.status(HttpStatus.CREATED).body(comment);
     }
+
 
     // !!! New method !!! Works in Postman
     //Returns all comments on post given by postId
@@ -50,8 +53,8 @@ public class CommentController {
         return ResponseEntity.ok(comment);
     }
 
-    //Not a commentId?
-    //Deletes a comment +
+
+    //Deletes a comment 
     @DeleteMapping("/comments/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable Long id) {
@@ -61,7 +64,8 @@ public class CommentController {
     }
 
 
-    //Returns all comments +
+
+    //Returns all comments 
     @GetMapping("/comments")
     public ResponseEntity <List<Comment>> listAllComments(){
         List<Comment> comments = commentRepository.findAll();
@@ -69,11 +73,7 @@ public class CommentController {
     }
 
 
-
-
-
-    //Should not it be commentId?
-    //Updates a comment +
+    //Updates a comment 
     @PutMapping("/comments/{id}")
     public ResponseEntity<Comment> updateComment(@PathVariable Long id, @RequestBody Comment commentParam) {
        commentRepository.findById(id).orElseThrow(ResourceNotFoundException::new);

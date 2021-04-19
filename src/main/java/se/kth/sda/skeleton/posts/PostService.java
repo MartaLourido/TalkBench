@@ -19,6 +19,5 @@ public class PostService {
         return post;
     }
 
-   // public boolean authorized()
 
 }
