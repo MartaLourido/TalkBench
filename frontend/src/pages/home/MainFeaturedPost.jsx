@@ -70,9 +70,9 @@ export default function MainFeaturedPost(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <button className="btn btn-outline-light " id="navbarColor01">
+            <button className="btn btn-light " id="navbarColor01">
               {" "}
-              <a href="/posts">Start for writing or reading here </a>
+              <a href="/posts">Start Posting</a>
             </button>
           </div>
         </Grid>
