@@ -85,7 +85,7 @@ let filteredCommentList = comments.filter(item => item.commentedPost == post.id)
            
           </Comment.Actions>
 
-         
+        
           <div className="comments-container">
             {comments
               ? comments.map((comment) => (
