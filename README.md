@@ -98,4 +98,3 @@ I am a junior programmer and this project was done during the backend module for
 [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/MartaLourido)
 
 
-Copyright (c) 2021 Marta Lourido
