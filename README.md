@@ -87,3 +87,15 @@ This project is done during the Backend Development Module of the KTH Software D
 ## About the team
 
 We are a team of junior developers studying at the KTH software development academy. 
+
+## About me
+
+I am a junior programmer and this project was done during the backend module for the KTH Software Development Academy.
+
+[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/marta-louridob/?locale=en_US/)
+&nbsp;
+
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/MartaLourido)
+
+
+Copyright (c) 2021 Marta Lourido
