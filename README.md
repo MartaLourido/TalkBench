@@ -28,6 +28,23 @@ This web is based on Spring, PostgreSQL, React, React router and Axios. Check th
   - React
   - React-DOM
 
+### Preview
+
+## Sign up - computer version
+![preview1](frontend/public/images/talkbench8.png)
+
+## Sign in - computer version
+![preview1](frontend/public/images/talkbench7.png)
+
+## Blog Page - computer version
+![preview1](frontend/public/images/talkbench1.png)
+
+## Blog Page - mobile version
+![preview1](frontend/public/images/talkbench2.png)
+
+## Post Page - mobile version
+![preview1](frontend/public/images/talkbench3.png)
+
 ## Setup
 Our development environment for a full-stack web application will consist of three main parts:
 
