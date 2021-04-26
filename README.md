@@ -14,7 +14,19 @@ This web is based on Spring, PostgreSQL, React, React router and Axios. Check th
 - [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 - [Axios](https://github.com/axios/axios)
 
-For the design we have been using material-ui and CSS.
+### Designed with 
+
+- [Material-ui](https://material-ui.com/)
+- [Sketch](https://www.sketch.com/)
+
+### Dev Dependencies
+
+  - Prettier
+  - Webpack
+  - Babel
+  - ESLint
+  - React
+  - React-DOM
 
 ## Setup
 Our development environment for a full-stack web application will consist of three main parts:
@@ -54,3 +66,7 @@ npm start
 ## About the project:  
 
 This project is done during the Backend Development Module of the KTH Software Development Academy.
+
+## About the team
+
+We are a team of junior developers studying at the KTH software development academy. 
