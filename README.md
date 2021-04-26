@@ -1,10 +1,10 @@
 # TalkBench
 
-![logo](public/images/logo)
+![logo](frontend/public/images/logo.png)
 
 TalkBench is a group project created by a team that seeks to connect all those people who are thinking about changing their career, it is a place to talk and connect, to ask for advice and to read about useful information that can help you make the decision to start programming, one of the best things to learn nowadays! 
 
-![firstpage](public/images/firstpage)
+![firstpage](frontend/public/images/firstpage.png)
 
 
 ### Build with
